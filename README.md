@@ -22,6 +22,14 @@
 [Next Step]
 - Avalonia UI 11로 UI 앱을 구성해야 함. (Reactive UI는 어떻게할지 선택해야 함.)
 
+[참고문서]
+- https://www.raspberrypi.com/documentation/computers/remote-access.html#using-secure-copy
+- https://www.raspberrypi.com/documentation/computers/remote-access.html#ip-address
+- https://www.raspberrypi.com/documentation/computers/remote-access.html#ssh
+- https://docs.microsoft.com/ko-kr/dotnet/iot/debugging?source=recommendations&tabs=self-contained&pivots=visualstudio
+- https://docs.microsoft.com/ko-kr/visualstudio/debugger/remote-debugging-dotnet-core-linux-with-ssh?view=vs-2022
+- https://docs.microsoft.com/ko-kr/dotnet/iot/deployment
+
 여담)
 https://tutorials-raspberrypi.com/raspberry-pi-default-login-password/
 위 문서에 따르면 라즈비언 OS 이미지를 SD 카드에 구울 때 기본 SSH 아이디는 pi, 비밀번호는 raspberry 라고 한다.
