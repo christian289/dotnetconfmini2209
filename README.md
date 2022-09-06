@@ -18,6 +18,10 @@
 - https://docs.microsoft.com/ko-kr/dotnet/iot/deployment 문서를 통해 라즈베리안에 .NET 6 설치 (정말 MSDN에 있는 그대로 따라하면 됨. 어디에 칠지 모르겠는 명령어는 모두 터미널에 입력하면 알아서 설치 다 해줌.)
 - 아마 지금까지 부팅/재부팅을 하면서 계속 경고 창이 떴을 텐데, 비밀번호를 재설정해주면 없어진다.
 - 그리고 windows에서 라즈베리파이로 ssh 붙는 키를 까먹었기 때문에 라즈비언에서 SSH를 열어줘도 접속하지 못한다. [이거](https://elbruno.com/2020/01/27/raspberrypi-how-to-solve-the-ssh-warning-warning-remote-host-identification-has-changed/)보고 해결한다. powershell에 고대로 치면 된다.
+- 왜 인지 모르겠지만 Windows 10의 Powershell로 raspbian에 hostname으로 연결이 안된다. ssh pi@raspberry 가 안된다는 말... 결국 ssh pi@192.168.219.105 IP로 접속해서 raspbian에 설정한 비밀번호를 입력하고 접속 성공했다.
+- Windows 에서 Avalonia UI 11 Helloworld App을 빌드하여 게시한 뒤, 해당 폴더에 가서 Powershell을 열고 SCP 명령어를 통해 raspbian으로 .NET App을 복사한다.
+```scp -r ./* pi@192.168.219.105:/home/pi/{내가만든 폴더}/{닷넷앱배포경로}```
+
 
 [Next Step]
 - Avalonia UI 11로 UI 앱을 구성해야 함. (Reactive UI는 어떻게할지 선택해야 함.)
