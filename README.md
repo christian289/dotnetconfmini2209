@@ -14,7 +14,7 @@
 - 라즈베리파이4를 부팅하고 처음 할 것
   1. 내장된 블루투스를 켜고 무선 마우스와 무선 키보드 등록(물론 유선 기기로 입출력하거나 전용 Receiver를 사용해도 됨)
   2. wifi 기능이 내장되어 있으므로 라즈비언을 업데이트 (매우 오래걸림)
-  3. wifi를 통해 [한글 폰트 및 한글 입력기 설치](https://stackoverflow.com/questions/71804429/raspberry-pi-ssh-access-denied) (2번의 업데이트 중일 때는 apt-get이 동작하지 않음, 재부팅 필요)
+  3. wifi를 통해 [한글 폰트](https://dbjina.tistory.com/60) 및 [한글 입력기 설치](https://fishpoint.tistory.com/7249) (2번의 업데이트 중일 때는 apt-get이 동작하지 않음, 재부팅 필요)
 - https://docs.microsoft.com/ko-kr/dotnet/iot/deployment 문서를 통해 라즈베리안에 .NET 6 설치 (정말 MSDN에 있는 그대로 따라하면 됨. 어디에 칠지 모르겠는 명령어는 모두 터미널에 입력하면 알아서 설치 다 해줌.)
 - 아마 지금까지 부팅/재부팅을 하면서 계속 경고 창이 떴을 텐데, 비밀번호를 재설정해주면 없어진다.
 - 그리고 windows에서 라즈베리파이로 ssh 붙는 키를 까먹었기 때문에 라즈비언에서 SSH를 열어줘도 접속하지 못한다. [이거](https://elbruno.com/2020/01/27/raspberrypi-how-to-solve-the-ssh-warning-warning-remote-host-identification-has-changed/)보고 해결한다. powershell에 고대로 치면 된다.
