@@ -22,6 +22,12 @@
 - Windows 에서 Avalonia UI 11 Helloworld App을 빌드하여 게시한 뒤, 해당 폴더에 가서 Powershell을 열고 SCP 명령어를 통해 raspbian으로 .NET App을 복사한다.
 ```scp -r ./* pi@192.168.219.105:/home/pi/{내가만든 폴더}/{닷넷앱배포경로}```
 
+---
+위의 방법으로 진행했지만, UI가 있는 .NET APP을 실행할 수 없었음.
+찾아보니 역시 공식문서가 존재했음.
+https://docs.avaloniaui.net/guides/deep-dives/running-your-app-on-a-raspberry-pi
+이대로 진행하는 과정에서도 이 문서에서는 OS를 Raspbian Lite를 설치하라고 했는데 나는 64bit OS를 설치했고, 
+[이 오류](https://damedame.tistory.com/entry/libzso1-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%B0%BE%EC%9D%84%EC%88%98-%EC%97%86%EC%9D%84%EB%95%8C) 와 [이 오류](https://stackoverflow.com/questions/11471722/libstdc-so-6-cannot-open-shared-object-file-no-such-file-or-directory) 를 지속적으로 겪었고, 결국 실행에 실패했고 다시 문서가 시키는대로 32bit Lite Raspbian OS를 설치하러 Rollback 함.
 
 [Next Step]
 - Avalonia UI 11로 UI 앱을 구성해야 함. (Reactive UI는 어떻게할지 선택해야 함.)
