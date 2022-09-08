@@ -1,0 +1,168 @@
+<UserControl x:Class="AvaloniaUIDashboard.Views.MainView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cnvt="clr-namespace:AvaloniaUIDashboard.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaUIDashboard.ViewModels"
+             x:Name="main"
+             Width="1920"
+             Height="1080"
+             Padding="0"
+             Background="Green"
+             mc:Ignorable="d">
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <Grid Width="{Binding ElementName=main, Path=Width}"
+          Height="{Binding ElementName=main, Path=Height}"
+          Margin="0"
+          HorizontalAlignment="Left"
+          VerticalAlignment="Top"
+          ColumnDefinitions="1300,*,600"
+          RowDefinitions="200,200,200,200,*">
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Margin="20,0,0,20"
+                   VerticalAlignment="Bottom"
+                   FontSize="40"
+                   FontWeight="Bold"
+                   Text="국민의 안전지킴이" />
+        <Canvas Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
+            <StackPanel Canvas.Left="1600"
+                        Canvas.Top="5"
+                        Spacing="0,0,1,0">
+                <StackPanel.Styles>
+                    <Style Selector="Rectangle">
+                        <Setter Property="Fill" Value="#C1917F" />
+                        <Setter Property="Height" Value="15" />
+                        <Setter Property="Width" Value="400" />
+                    </Style>
+                </StackPanel.Styles>
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+                <Rectangle />
+            </StackPanel>
+            <Border Canvas.Left="0"
+                    Canvas.Top="0"
+                    Width="1700"
+                    Height="200"
+                    Background="#B93125"
+                    BorderBrush="Black"
+                    BorderThickness="5"
+                    CornerRadius="0, 40, 40, 0">
+                <StackPanel Orientation="Horizontal">
+                    <!--  WPF에서는 Resource에 등록하는데 Avalonia에서는 Styles에 함  -->
+                    <StackPanel.Styles>
+                        <!--  WPF에서는 TargetType인데 Avalonia에서는 Selector에 함  -->
+                        <Style Selector="TextBlock">
+                            <Setter Property="FontSize" Value="140" />
+                            <Setter Property="Margin" Value="20,0,0,0" />
+                            <Setter Property="FontWeight" Value="Heavy" />
+                        </Style>
+                    </StackPanel.Styles>
+                    <TextBlock VerticalAlignment="Center"
+                               Foreground="Black"
+                               Text="안전사고 " />
+                    <TextBlock VerticalAlignment="Center"
+                               Foreground="White"
+                               Text="줄이기 실천운동" />
+                </StackPanel>
+            </Border>
+        </Canvas>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="20,0,0,0"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            <StackPanel.Styles>
+                <Style Selector="TextBlock">
+                    <Setter Property="FontSize" Value="100" />
+                </Style>
+            </StackPanel.Styles>
+            <TextBlock Foreground="Red" Text="{Binding CurrentYear, StringFormat={}{0:D2}}" />
+            <TextBlock Text="년" />
+            <TextBlock Foreground="Red" Text="{Binding CurrentMonth, StringFormat={}{0:D2}}" />
+            <TextBlock Text="월" />
+            <TextBlock Foreground="Red" Text="{Binding CurrentDay, StringFormat={}{0:D2}}" />
+            <TextBlock Text="일" />
+            <TextBlock Margin="40,0,0,0" Text="현재" />
+        </StackPanel>
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="20,0,0,0"
+                    Orientation="Horizontal">
+            <StackPanel.Styles>
+                <Style Selector="TextBlock">
+                    <Setter Property="FontSize" Value="90" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+            </StackPanel.Styles>
+            <TextBlock Text="무사고로부터 " />
+            <TextBlock Foreground="Red" Text="{Binding DueTime, StringFormat={}{0:HH:mm:ss}}" />
+            <TextBlock Text=" 경과." />
+        </StackPanel>
+        <TextBlock Grid.Row="4"
+                   Grid.Column="0"
+                   Margin="0,0,0,50"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="110"
+                   Foreground="LightCyan">
+            <TextBlock.Text>
+                <MultiBinding Converter="{cnvt:ClockConverter}" StringFormat="{}[현재 시각]{0}">
+                    <Binding Path="CurrentHour" />
+                    <Binding Path="CurrentMinute" />
+                    <Binding Path="CurrentSecond" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Grid Grid.Row="2"
+              Grid.RowSpan="3"
+              Grid.Column="2"
+              Margin="10,10,10,50"
+              RowDefinitions="100, *">
+            <TextBlock Grid.Row="0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="80"
+                       Text="~ Notice ~"
+                       TextAlignment="Center" />
+            <Border Grid.Row="1"
+                    Padding="10"
+                    BorderBrush="Red"
+                    BorderThickness="10"
+                    CornerRadius="30">
+                <Border.Styles>
+                    <Style Selector="Border">
+                        <Style.Animations>
+                            <Animation IterationCount="INFINITE"
+                                       PlaybackDirection="AlternateReverse"
+                                       Duration="0:0:1">
+                                <KeyFrame Cue="0%">
+                                    <Setter Property="BorderBrush" Value="Blue" />
+                                </KeyFrame>
+                                <KeyFrame Cue="100%">
+                                    <Setter Property="BorderBrush" Value="Red" />
+                                </KeyFrame>
+                            </Animation>
+                        </Style.Animations>
+                    </Style>
+                </Border.Styles>
+                <TextBlock FontSize="70"
+                           Foreground="LightCyan"
+                           Text="{Binding NoticeStr}"
+                           TextWrapping="Wrap" />
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>
