@@ -1,0 +1,89 @@
+<UserControl x:Class="AvaloniaCommunityToolkitTest.MainView"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AvaloniaCommunityToolkitTest"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="main"
+             Width="800"
+             Height="450"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             mc:Ignorable="d">
+    <UserControl.Styles>
+        <Style Selector="Rectangle.red">
+            <Setter Property="Height" Value="100" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Fill" Value="Red" />
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           PlaybackDirection="AlternateReverse"
+                           Duration="0:0:1">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0.0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1.0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="*,*,*,*" ShowGridLines="True">
+        <!--  d: 속성을 사용하면 컴파일 타임에서 에러로 인식해서 유지형 디자인이 동작은 안하는데  -->
+        <!--  실행하면 런타임에서는 문제없이 잘 돌아간다.  -->
+        <!--  불편하더라도 d: 속성은 붙혔다가 주석처리해가면서 해야할 것 같다.  -->
+        <Rectangle Grid.Row="0"
+                   Width="300"
+                   Classes="red" />
+        <TextBlock x:Name="tbAnimationText"
+                   Grid.Row="1"
+                   Width="300"
+                   Margin="0,0,0,0"
+                   HorizontalAlignment="Left"
+                   Background="AliceBlue"
+                   Text="{Binding Text}">
+            <TextBlock.Styles>
+                <Style Selector="TextBlock">
+                    <Style.Animations>
+                        <Animation IterationCount="INFINITE"
+                                   PlaybackDirection="AlternateReverse"
+                                   Duration="0:0:5">
+                            <KeyFrame Cue="0%">
+                                <Setter Property="Margin" Value="0,0,0,0" />
+                            </KeyFrame>
+                            <KeyFrame Cue="100%">
+                                <Setter Property="Margin">
+                                    <Setter.Value>
+                                        <MultiBinding Converter="{local:MarginAnimationConverter}">
+                                            <Binding ElementName="tbAnimationText" Path="Width" />
+                                            <Binding ElementName="main" Path="Width" />
+                                        </MultiBinding>
+                                    </Setter.Value>
+                                </Setter>
+                            </KeyFrame>
+                        </Animation>
+                    </Style.Animations>
+                </Style>
+            </TextBlock.Styles>
+        </TextBlock>
+        <Button Grid.Row="2"
+                Width="300"
+                Height="100"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Command="{Binding BaseCommand}">
+            <TextBlock FontSize="80" Text="{Binding ClickCounter}" />
+        </Button>
+        <TextBlock Grid.Row="4" FontSize="100">
+            <TextBlock.Text>
+                <MultiBinding Converter="{local:ClockConverter}">
+                    <Binding Path="Hour" />
+                    <Binding Path="Minute" />
+                    <Binding Path="Second" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+    </Grid>
+</UserControl>
