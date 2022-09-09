@@ -29,9 +29,20 @@
 찾아보니 역시 [Raspbian에서 Avalonia UI App을 실행하는 공식문서](https://docs.avaloniaui.net/guides/deep-dives/running-your-app-on-a-raspberry-pi)가 존재했다.
 이대로 진행하는 과정에서도 이 문서에서는 OS를 Raspbian Lite를 설치하라고 했는데 나는 64bit OS를 설치했고, [이 오류](https://damedame.tistory.com/entry/libzso1-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%B0%BE%EC%9D%84%EC%88%98-%EC%97%86%EC%9D%84%EB%95%8C) 와 [이 오류](https://stackoverflow.com/questions/11471722/libstdc-so-6-cannot-open-shared-object-file-no-such-file-or-directory) 를 지속적으로 겪었다.
 결국 실행에 실패했고 다시 문서가 시키는대로 32bit Lite Raspbian OS를 설치하러 Rollback 했다.
+---
+20220908
 
-[Next Step]
-- Avalonia UI 11로 UI 앱을 구성해야 함. (Reactive UI는 어떻게할지 선택해야 함.)
+Raspbian 에서 Avalonia UI로 만든 전광판 프로그램 완성
+Raspbian은 64bit로 재설치했고, 한글폰트만 설치해서 한글이 출력되게만 한다음, 한글 입력기는 설치 안했고, Locale도 영문으로 유지했다.
+그랬더니 더블클릭해서는 역시 실행이 안되지만 터미널에서 실행하면 문제없이 실행된다.
+
+GrapeCity에서 샘플로 수령한 GcExcel vs Aspose vs SpreadsheetGear 성능 측정 프로그램이 .NET Core 2.1 이라 .NET 6로 변경하고 Nuget 패키지들도 업데이트했다.
+Windows와 Raspbian에서 모두 테스트했고 GcExcel이 파일을 읽어 들이는데에 있어 압도적으로 빨랐다. 또한 메모리 효율이 매우 높아서 연산속도는 조금 더뎠지만 메모리 할당을 거의 하지 않고 Excel 연산을 수행했다.
+그렇게 Raspbian에서 계산한 Excel 성능 측청 문서는 scp를 통해 문서로 Windows 10으로 전송해서 테스트했다.
+우선 Windows 10 에서 SSH를 이용해본 적이 없었는데 OpenSSH가 기본적으로 설치되어 있었고, [이 영상](https://www.youtube.com/watch?v=OwrBOAKXa8c)을 보고 서버만 활성화 시켰다.
+이후 ssh를 접속할 때 PC 이름으로 접속하는 것으로 착각하여 장기간 삽질 후, [검색을 통해](https://superuser.com/questions/1661724/how-do-i-find-my-username-and-servername-for-windows-ssh-server) PC이름이 아닌 powershell에서 ```$env:USERNAME``` 으로 확인가능한 것이 내 ssh ID라고 알게되었다.
+그 ID를 보니까 비밀번호가 유추가 되어서 잘 때려맞췄다...(내 시간 ㅠㅠ)
+
 
 [참고문서]
 - https://www.raspberrypi.com/documentation/computers/remote-access.html#using-secure-copy
