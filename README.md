@@ -29,6 +29,7 @@
 찾아보니 역시 [Raspbian에서 Avalonia UI App을 실행하는 공식문서](https://docs.avaloniaui.net/guides/deep-dives/running-your-app-on-a-raspberry-pi)가 존재했다.
 이대로 진행하는 과정에서도 이 문서에서는 OS를 Raspbian Lite를 설치하라고 했는데 나는 64bit OS를 설치했고, [이 오류](https://damedame.tistory.com/entry/libzso1-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%B0%BE%EC%9D%84%EC%88%98-%EC%97%86%EC%9D%84%EB%95%8C) 와 [이 오류](https://stackoverflow.com/questions/11471722/libstdc-so-6-cannot-open-shared-object-file-no-such-file-or-directory) 를 지속적으로 겪었다.
 결국 실행에 실패했고 다시 문서가 시키는대로 32bit Lite Raspbian OS를 설치하러 Rollback 했다.
+
 ---
 20220908
 
