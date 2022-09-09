@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Aspose.Cells" Version="22.9.0" />
+    <PackageReference Include="GrapeCity.Documents.Excel" Version="5.2.1" />
+    <PackageReference Include="SpreadsheetGear" Version="8.7.15" />
+  </ItemGroup>
+
 </Project>
