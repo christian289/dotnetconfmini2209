@@ -1,8 +1,96 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model AzureLinuxGcExcel.Models.ViewModels.IndexViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<form asp-controller="Home" asp-action="Index" enctype="multipart/form-data" method="post" class="mb-2">
+
+    <div class="form-group">
+        <div class="input-group">
+
+            <input type="file" name="files" multiple />
+            <div class="input-group-append">
+                <button class="btn btn-primary">Upload</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="chart_wrapper" class="row" >
+
 </div>
+
+
+<div id="chart_datas">
+    @Model.ChartDatasJson
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawVisualization);
+
+        function drawVisualization() {
+
+            let datas_str = $('#chart_datas').text();
+
+            if(datas_str !== '[]'){
+
+                let datas = JSON.parse(datas_str);
+
+                datas.forEach((e,i) => {
+
+                    let time_chart_element = $(`<div id="${e.FileName}_time" class="col-md-6" style="width: 900px; height: 500px;">`);
+
+                    $(time_chart_element).appendTo($('#chart_wrapper'));
+
+
+                    let time_ = ['Library','OpenTime','SaveTime','CalcTime']
+
+                    let timeDatas_ = e.Data.filter((item) => {
+                        console.log(item);
+                        return time_.indexOf(item[0]) !== -1;
+                    })
+
+                    let timeDatas = google.visualization.arrayToDataTable(timeDatas_);
+
+                    let time_options = {
+                        title: e.FileName,
+                        vAxis: { title: 'Sec' },
+                        seriesType: 'bars',
+                    };
+
+                    let timechart = new google.visualization.ComboChart(document.getElementById(`${e.FileName}_time`));
+                    timechart.draw(timeDatas, time_options);
+
+
+                    let mem_chart_element = $(`<div id="${e.FileName}_mem" class="col-md-6" style="width: 900px; height: 500px;">`);
+
+                    $(mem_chart_element).appendTo($('#chart_wrapper'));
+
+                    let mem_ = ['Library', 'MemSizeAfterOpen', 'MemSizeAfterCalc']
+
+                    let memDatas_ = e.Data.filter((item) => {
+                        console.log(item);
+                        return mem_.indexOf(item[0]) !== -1;
+                    })
+
+                    let memDatas = google.visualization.arrayToDataTable(memDatas_);
+
+                    let mem_options = {
+                        title: e.FileName,
+                        vAxis: { title: 'Sec' },
+                        seriesType: 'bars',
+                    };
+
+                    let memchart = new google.visualization.ComboChart(document.getElementById(`${e.FileName}_mem`));
+                    memchart.draw(memDatas, mem_options);
+                    
+                    $('<hr/>').appendTo($('#chart_wrapper'));
+                })
+
+            }
+
+        }
+    </script>
+
+}
