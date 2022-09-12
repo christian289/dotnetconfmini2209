@@ -12,4 +12,20 @@
     <PackageReference Include="SpreadsheetGear" Version="8.7.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Files\Input\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Files\Input\BigNumber.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Input\test performance.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Input\Wicked.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

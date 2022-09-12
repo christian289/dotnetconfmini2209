@@ -1,0 +1,53 @@
+﻿@model AzureLinuxGcExcel.Models.ViewModels.AsposeViewModel
+
+<form asp-controller="Home" asp-action="Aspose" enctype="multipart/form-data" method="post" class="mb-2">
+
+    <div class="form-group">
+        <div class="input-group">
+            
+        <input type="file" name="files" />
+            <div class="input-group-append">
+                <button class="btn btn-primary" >Upload</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th rowspan="2">LoadTime(s)</th>
+            <th rowspan="2">SaveTime(s)</th>
+            <th rowspan="2">Calculation Time(s)</th>
+            <th colspan="2" >Memory(MB)</th>
+        </tr>
+        <tr>
+            <th>Before Calculation</th>
+            <th>After Calculation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.OpenTime
+            </td>
+            <td>
+                @Model.SaveTime
+            </td>
+            <td>
+                @Model.CalcTime
+            </td>
+            <td>
+                @Model.MemSizeAfterOpen
+            </td>
+            <td>
+                @Model.MemSizeAfterCalc
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts{
+
+}
