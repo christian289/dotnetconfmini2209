@@ -66,7 +66,7 @@ namespace AzureLinuxGcExcel.Library
         }
 
 
-        private string OutFilePath = Path.Combine("Files", "Output", "Aspose");
+        private string OutFilePath = Path.Combine("Files", "Output", "SpreadsheetGear");
 
         [Display(Name = "FileName")]
         public string FileName { get; set; }

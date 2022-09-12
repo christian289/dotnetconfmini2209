@@ -10,8 +10,6 @@ namespace AzureLinuxGcExcel.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private string OutFilePath = Path.Combine("Files", "Output", "GcExcel");
-
         public HomeController(
             ILogger<HomeController> logger
             )
@@ -40,7 +38,7 @@ namespace AzureLinuxGcExcel.Controllers
             foreach (var file in files)
             {
 
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", file.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), file.FileName);
 
                 using (var stream = System.IO.File.Create(filePath))
                 {
@@ -87,7 +85,7 @@ namespace AzureLinuxGcExcel.Controllers
                 return BadRequest("Cannot Read files");
             }
 
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", files[0].FileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), files[0].FileName);
 
             using (var stream = System.IO.File.Create(filePath))
             {
@@ -115,7 +113,7 @@ namespace AzureLinuxGcExcel.Controllers
                 return BadRequest("Cannot Read files");
             }
 
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", files[0].FileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), files[0].FileName);
 
             using (var stream = System.IO.File.Create(filePath))
             {
@@ -143,7 +141,7 @@ namespace AzureLinuxGcExcel.Controllers
                 return BadRequest("Cannot Read files");
             }
 
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", files[0].FileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), files[0].FileName);
 
             using (var stream = System.IO.File.Create(filePath))
             {

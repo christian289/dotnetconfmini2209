@@ -13,20 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Files\Input\" />
+    <Folder Include="NewFolder\" />
     <Folder Include="Options\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Files\Input\BigNumber.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Files\Input\test performance.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Files\Input\Wicked.xlsx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
