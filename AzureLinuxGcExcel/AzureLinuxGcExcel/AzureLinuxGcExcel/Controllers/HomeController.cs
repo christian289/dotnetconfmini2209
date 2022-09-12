@@ -1,16 +1,7 @@
-﻿using Aspose.Cells;
-using AzureLinuxGcExcel.Library;
+﻿using AzureLinuxGcExcel.Library;
 using AzureLinuxGcExcel.Models;
 using AzureLinuxGcExcel.Models.ViewModels;
-using AzureLinuxGcExcel.Options;
-using GcExcel_Performance;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using System;
 using System.Diagnostics;
 
 namespace AzureLinuxGcExcel.Controllers
@@ -18,20 +9,14 @@ namespace AzureLinuxGcExcel.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private GrapeCityOption _grapeCityOption;
-        private SpreadsheetGearOption _spreadsheetGearOption;
 
         private string OutFilePath = Path.Combine("Files", "Output", "GcExcel");
 
         public HomeController(
-            ILogger<HomeController> logger,
-            IOptionsSnapshot<GrapeCityOption> grapeCityOption,
-            IOptionsSnapshot<SpreadsheetGearOption> spreadsheetGearOption
+            ILogger<HomeController> logger
             )
         {
             _logger = logger;
-            _grapeCityOption = grapeCityOption.Value;
-            _spreadsheetGearOption = spreadsheetGearOption.Value;
         }
 
         public IActionResult Index()

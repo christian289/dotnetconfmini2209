@@ -1,4 +1,3 @@
-using AzureLinuxGcExcel.Options;
 using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,16 +5,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.Configure<GrapeCityOption>(builder.Configuration.GetSection("GrapeCity"));
-builder.Services.Configure<SpreadsheetGearOption>(builder.Configuration.GetSection("SpreadsheetGear"));
-
-
+//파일 전송 사이즈 리밋 최대화
 builder.Services.Configure<FormOptions>(o =>
 {
     o.ValueLengthLimit = int.MaxValue;
     o.MultipartBodyLengthLimit = long.MaxValue;
 });
 
+//라이센스 키 설정
+GrapeCity.Documents.Excel.LicenseManager.SetLicense(builder.Configuration.GetSection("GrapeCity")["Key"]);
+SpreadsheetGear.Factory.SetSignedLicense(builder.Configuration.GetSection("SpreadsheetGear")["Key"]);
 
 var app = builder.Build();
 
@@ -23,7 +22,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

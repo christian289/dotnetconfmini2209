@@ -15,8 +15,6 @@ namespace AzureLinuxGcExcel.Library
 
         public MySSG(string inputFile)
         {
-            SpreadsheetGear.Factory.SetSignedLicense("SpreadsheetGear.License, Type=Trial, Product=BND, Expires=2022-10-09, Company=Dylan Hwang, Email=hdg8902@naver.com, Signature=P+km7k160YponIw8e+yDGMOOjQw7rffXEDKBg2SuufcA#ZyoyiGasjc/hD5YWV7zs2QEYQydXpoAINUmZHqBgG+IA#J");
-
             FileName = Path.GetFileName(inputFile);
             Console.WriteLine("Benchmark for SpreadSheetGear");
             Console.WriteLine();

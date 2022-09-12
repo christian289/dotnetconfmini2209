@@ -22,7 +22,7 @@ namespace AzureLinuxGcExcel.Library
             Console.WriteLine("FileName: \"" + FileName + "\"");
             Console.WriteLine();
 
-            Workbook workbook = new Workbook("E142345527939815#A0m7oTO7ITN5QzMyQTMiojIklkI1pjIEJCLi4TPBRFSvhVUMpXRCNnV0VzQuNWWwUnZxJlYnFzQOp7KyImQSl7aNREbOVzQ8M6ZwZmRBJmbux4QxYETx4WQKJmYUFzNwRGe9dGZppHUXBjM8QDbQRmSPpmI0IyUiwSN7cDMzITM9kTM0IicfJye&Qf35Vfic5M8UkI0IyQiwiI5YHI4VmTuACblNGeFBicvZGI49WZtV7YvREIDdkI0IiTis7W0ICZyBlIsIyMzATM6ADI5IDOwIjMwIjI0ICdyNkIsISNygDMzIDMyIiOiAHeFJCLiAIjtXIjtDIvsj8prLiOiEmTDJCLlVnc4pjIsZXRiwie3iD");
+            Workbook workbook = new Workbook();
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             workbook.Open(inputFile);
