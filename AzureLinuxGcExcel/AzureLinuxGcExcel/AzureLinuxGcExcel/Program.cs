@@ -1,7 +1,11 @@
+using AzureLinuxGcExcel.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.Configure<GrapeCityOption>(builder.Configuration.GetSection(GrapeCityOption))
 
 var app = builder.Build();
 
