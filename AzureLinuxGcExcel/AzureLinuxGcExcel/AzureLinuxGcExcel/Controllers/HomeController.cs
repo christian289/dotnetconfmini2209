@@ -32,7 +32,7 @@ namespace AzureLinuxGcExcel.Controllers
         {
             if (files == null)
             {
-                return BadRequest("파일 업로드가 필요합니다");
+                return BadRequest("Cannot Read files");
             }
 
             IndexViewModel vm = new IndexViewModel();
@@ -84,7 +84,7 @@ namespace AzureLinuxGcExcel.Controllers
         {
             if (files == null)
             {
-                return BadRequest("파일 업로드가 필요합니다");
+                return BadRequest("Cannot Read files");
             }
 
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", files[0].FileName);
@@ -112,7 +112,7 @@ namespace AzureLinuxGcExcel.Controllers
         {
             if (files == null)
             {
-                return BadRequest("파일 업로드가 필요합니다");
+                return BadRequest("Cannot Read files");
             }
 
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", files[0].FileName);
@@ -140,7 +140,7 @@ namespace AzureLinuxGcExcel.Controllers
         {
             if (files == null)
             {
-                return BadRequest("파일 업로드가 필요합니다");
+                return BadRequest("Cannot Read files");
             }
 
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", files[0].FileName);

@@ -5,14 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//파일 전송 사이즈 리밋 최대화
+//File Limit
 builder.Services.Configure<FormOptions>(o =>
 {
     o.ValueLengthLimit = int.MaxValue;
     o.MultipartBodyLengthLimit = long.MaxValue;
 });
 
-//라이센스 키 설정
+//Set License
 GrapeCity.Documents.Excel.LicenseManager.SetLicense(builder.Configuration.GetSection("GrapeCity")["Key"]);
 SpreadsheetGear.Factory.SetSignedLicense(builder.Configuration.GetSection("SpreadsheetGear")["Key"]);
 
