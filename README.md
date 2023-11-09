@@ -1,5 +1,7 @@
 # dotnetconfmini2209
 닷넷콘 미니 2209 준비 (그레이프시티 GCExcel, 라즈베리파이 x Avalonia UI 11)
+'백-엔드 | Back-end Excel 서비스 만들기(GcExcel)' 영상: https://youtu.be/Z6Z3qgHYaOg?t=12959
+'AvaloniaUI + Raspberry Pi => 전광판 완성!' 영상: https://youtu.be/Z6Z3qgHYaOg?t=14459
 
 1. 라즈베리파이4 + Avalonia UI
 - 라즈베리파이4가 필요함.
